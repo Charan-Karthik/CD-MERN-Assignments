@@ -61,6 +61,11 @@ const reversed1 = story.split("").reverse().join("");
 // console.log(reversed1);
 // inefficient because it's multiple loops; split is a loop, reverse is a loop, join is a loop (time complexity is O(n^3))
 
+// NOTE TO SELF
+// ^ need to double check if it's actually O(n^3)
+// it should be based on my understanding because .split functions as a loop in the background, then .reverse is another loop, and so is .join
+// but they're not nested within each other so maybe it's just 3*O(n)? whereas the one below would just be O(n)?
+
 // reverse a string more efficiently (using only one loop)
 function efficientReverse(string){
     var reversedString = "";

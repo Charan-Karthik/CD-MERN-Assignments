@@ -1,3 +1,5 @@
+//  QUESTION 1 
+
 // Slower Variation
 // Check all the numbers up to the number
 // Number.prototype.isPrime = function () {
@@ -12,7 +14,7 @@
 // Faster variation
 // Check up to the square root of the number
 Number.prototype.isPrime = function () {
-    for (let i = 2; i < Math.sqrt(this); i++) {
+    for (let i = 2; i <= Math.sqrt(this); i++) {
         if (this % i === 0) {
             return false;
         }
@@ -30,10 +32,12 @@ while (primeCount < 1e4) {
     }
     num++;
 }
-// console.log(`The 10,000th prime number is ${num - 1}`);
-// console.log(`This took ${performance.now() - start} milliseconds to run`);
+console.log(`The 10,000th prime number is ${num - 1}`);
+console.log(`This took ${performance.now() - start} milliseconds to run`);
 
-// ========================
+console.log();
+// QUESTION 2
+
 // recursive
 function rFib(n) {
     if (n < 2) {
@@ -41,7 +45,11 @@ function rFib(n) {
     }
     return rFib(n - 1) + rFib(n - 2);
 }
-rFib(20);
+// rFib(20);
+const startRFib = performance.now();
+console.log("The 30th number in the Fibonacci Sequence is:", rFib(30));
+console.log("Finding the 30th number in the Fibonacci Sequence via recursion took", (performance.now()-startRFib), "milliseconds.")
+
 // iterative
 function iFib(n) {
     const vals = [0, 1];
@@ -51,21 +59,26 @@ function iFib(n) {
     }
     return vals[n];
 }
-iFib(20);
+// iFib(20);
+const startIFib = performance.now();
+console.log("The 30th number in the Fibonacci Sequence is:", iFib(30));
+console.log("Finding the 30th number in the Fibonacci Sequence via iteration took", (performance.now()-startIFib), "milliseconds.")
 
-// RECURSIVE approach to the Fibonnaci Sequence will be FASTER
+// Prediction: RECURSIVE approach to the Fibonnaci Sequence will be FASTER
+// Actual: Iterative approach was faster!
 
-// ========================
+
+console.log();
+// Question 3
+
 const story = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident culpa nihil repellat nulla laboriosam maxime, quia aliquam ipsam reprehenderit delectus reiciendis molestias assumenda aut fugit tempore laudantium tempora aspernatur? Repellendus consequatur expedita doloribus soluta cupiditate quae fugit! Aliquid, repellat animi, illum molestias maiores, laboriosam vero impedit iusto mollitia optio labore asperiores!";
+
+const startR1 = performance.now();
 const reversed1 = story.split("").reverse().join("");
-// console.log(reversed1);
-// inefficient because it's multiple loops; split is a loop, reverse is a loop, join is a loop (time complexity is O(n^3))
+console.log(reversed1);
+console.log("Runtime for reversing a string with built-in functions =", (performance.now()-startR1));
 
-// NOTE TO SELF
-// ^ need to double check if it's actually O(n^3)
-// it should be based on my understanding because .split functions as a loop in the background, then .reverse is another loop, and so is .join
-// but they're not nested within each other so maybe it's just 3*O(n)? whereas the one below would just be O(n)?
-
+console.log();
 // reverse a string more efficiently (using only one loop)
 function efficientReverse(string){
     var reversedString = "";
@@ -74,4 +87,8 @@ function efficientReverse(string){
     }
     return reversedString;
 }
-console.log(efficientReverse(story));
+const startR2 = performance.now();
+const reversed2 = efficientReverse(story);
+console.log(reversed2);
+console.log("Runtime for reversing a string more efficiently =", (performance.now()-startR2));
+// Not actually more efficient... Need to work on this one!

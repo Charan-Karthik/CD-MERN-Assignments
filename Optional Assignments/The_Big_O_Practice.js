@@ -70,6 +70,7 @@ console.log("Finding the 30th number in the Fibonacci Sequence via iteration too
 
 console.log();
 // Question 3
+// const { performance } = require('perf_hooks');
 
 const story = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident culpa nihil repellat nulla laboriosam maxime, quia aliquam ipsam reprehenderit delectus reiciendis molestias assumenda aut fugit tempore laudantium tempora aspernatur? Repellendus consequatur expedita doloribus soluta cupiditate quae fugit! Aliquid, repellat animi, illum molestias maiores, laboriosam vero impedit iusto mollitia optio labore asperiores!";
 
@@ -77,7 +78,6 @@ const startR1 = performance.now();
 // console.log(startR1);
 const reversed1 = story.split("").reverse().join("");
 console.log(reversed1);
-// tested these on a separate file and seems that the performance time calculation is a bit off...
 console.log("Runtime for reversing a string with built-in functions =", (performance.now() - startR1));
 
 console.log();
@@ -95,4 +95,5 @@ const reversed2 = efficientReverse(story);
 console.log(reversed2);
 console.log("Runtime for reversing a string more efficiently =", (performance.now() - startR2));
 
-// tested this on a separate file and found that the efficiency numbers aren't matching up (need to find out why)
+// Question 3 runtimes have a bug that is displaying unexpected runtimes for the respective functions. Still trying to fix this...
+// For now, though, the expected runtimes appear when commenting out everything above Q3. The "efficientReverse" is indeed faster than using the three build in methods.

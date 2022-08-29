@@ -15,6 +15,9 @@ class Unit extends Card {
     attack(target){
         // reduce target res by power
         target.res -= this.power;
+        if(target.res < 0){
+            target.res = 0;
+        }
     }
 }
 
@@ -45,11 +48,10 @@ console.log(blackBeltNinja);
 console.log();
 
 // testing attack
-redBeltNinja.attack(blackBeltNinja);
-console.log("A red belt ninja attacks a black belt ninja!")
-console.log(blackBeltNinja);
+// redBeltNinja.attack(blackBeltNinja);
+// console.log(blackBeltNinja);
 
-console.log();
+// console.log();
 
 var hardAlgo = new Effect("Hard Algorithm", 2, "Increase target's resilience by 3", "resilience", 3)
 var rejection = new Effect("Unhandled Promise Rejection", 1, "Reduce target's resilience by 2", "resilience", -2)
@@ -58,24 +60,47 @@ var pairProgram = new Effect("Pair Programming", 3, "Increase target's power by 
 // testing "Hard Algorithm" Effect Card
 // console.log(blackBeltNinja);
 // console.log(hardAlgo);
-hardAlgo.play(blackBeltNinja);
-console.log("The 'Hard Algorithm' Effect Card is played on the black belt ninja!")
-console.log(blackBeltNinja);
+// hardAlgo.play(blackBeltNinja);
+// console.log(blackBeltNinja);
 
-console.log();
+// console.log();
 
-// testing "Unhandled Promise Rejection" Effect Card
+// // testing "Unhandled Promise Rejection" Effect Card
+// // console.log(redBeltNinja);
+// // console.log(rejection);
+// rejection.play(redBeltNinja);
 // console.log(redBeltNinja);
-// console.log(rejection);
-rejection.play(redBeltNinja);
-console.log("The 'Unhandled Promise Rejection' Effect Card is played on the red belt ninja!")
+
+// console.log();
+
+// // testing "Pair Programming" Effect Card
+// // console.log(blackBeltNinja);
+// // console.log(pairProgram);
+// pairProgram.play(blackBeltNinja);
+// console.log(blackBeltNinja);
+
+// Playing the Assignment Scenario
+hardAlgo.play(redBeltNinja);
+console.log("The 'Hard Algorithm' Effect Card is played on the Red Belt Ninja!")
 console.log(redBeltNinja);
 
 console.log();
 
-// testing "Pair Programming" Effect Card
-// console.log(blackBeltNinja);
-// console.log(pairProgram);
-pairProgram.play(blackBeltNinja);
-console.log("The 'Pair Programming' Effect Card is played on the black belt ninja!")
+rejection.play(redBeltNinja);
+console.log("The 'Unhandled Promise Rejection' Effect Card is played on the Red Belt Ninja!")
+console.log(redBeltNinja);
+
+console.log();
+
+pairProgram.play(redBeltNinja);
+console.log("The 'Pair Programming' Effect Card is played on the Red Belt Ninja!")
+console.log(redBeltNinja);
+
+console.log();
+console.log(redBeltNinja);
+console.log(blackBeltNinja);
+
+console.log();
+redBeltNinja.attack(blackBeltNinja);
+console.log("The Red Belt Ninja attacks the Black Belt Ninja!")
 console.log(blackBeltNinja);

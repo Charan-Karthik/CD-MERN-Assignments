@@ -48,7 +48,7 @@ function rFib(n) {
 // rFib(20);
 const startRFib = performance.now();
 console.log("The 30th number in the Fibonacci Sequence is:", rFib(30));
-console.log("Finding the 30th number in the Fibonacci Sequence via recursion took", (performance.now()-startRFib), "milliseconds.")
+console.log("Finding the 30th number in the Fibonacci Sequence via recursion took", (performance.now() - startRFib), "milliseconds.")
 
 // iterative
 function iFib(n) {
@@ -62,7 +62,7 @@ function iFib(n) {
 // iFib(20);
 const startIFib = performance.now();
 console.log("The 30th number in the Fibonacci Sequence is:", iFib(30));
-console.log("Finding the 30th number in the Fibonacci Sequence via iteration took", (performance.now()-startIFib), "milliseconds.")
+console.log("Finding the 30th number in the Fibonacci Sequence via iteration took", (performance.now() - startIFib), "milliseconds.")
 
 // Prediction: RECURSIVE approach to the Fibonnaci Sequence will be FASTER
 // Actual: Iterative approach was faster!
@@ -74,21 +74,25 @@ console.log();
 const story = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident culpa nihil repellat nulla laboriosam maxime, quia aliquam ipsam reprehenderit delectus reiciendis molestias assumenda aut fugit tempore laudantium tempora aspernatur? Repellendus consequatur expedita doloribus soluta cupiditate quae fugit! Aliquid, repellat animi, illum molestias maiores, laboriosam vero impedit iusto mollitia optio labore asperiores!";
 
 const startR1 = performance.now();
+// console.log(startR1);
 const reversed1 = story.split("").reverse().join("");
 console.log(reversed1);
-console.log("Runtime for reversing a string with built-in functions =", (performance.now()-startR1));
+// tested these on a separate file and seems that the performance time calculation is a bit off...
+console.log("Runtime for reversing a string with built-in functions =", (performance.now() - startR1));
 
 console.log();
 // reverse a string more efficiently (using only one loop)
-function efficientReverse(string){
+function efficientReverse(string) {
     var reversedString = "";
-    for(var i = string.length - 1; i >= 0; i--){
+    for (var i = string.length - 1; i >= 0; i--) {
         reversedString += string[i];
     }
     return reversedString;
 }
 const startR2 = performance.now();
+// console.log(startR2);
 const reversed2 = efficientReverse(story);
 console.log(reversed2);
-console.log("Runtime for reversing a string more efficiently =", (performance.now()-startR2));
-// Not actually more efficient... Need to work on this one!
+console.log("Runtime for reversing a string more efficiently =", (performance.now() - startR2));
+
+// tested this on a separate file and found that the efficiency numbers aren't matching up (need to find out why)

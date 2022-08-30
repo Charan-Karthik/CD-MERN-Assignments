@@ -1,40 +1,48 @@
 class Card {
-    constructor(name, cost){
+    constructor(name, cost) {
         this.name = name;
         this.cost = cost;
     }
 }
 
 class Unit extends Card {
-    constructor(name, cost, power, res){
+    constructor(name, cost, power, res) {
         super(name, cost);
         this.power = power;
         this.res = res;
     }
 
-    attack(target){
+    attack(target) {
         // reduce target res by power
-        target.res -= this.power;
-        if(target.res < 0){
-            target.res = 0;
+        if (target instanceof Unit) {
+            target.res -= this.power;
+            if (target.res < 0) {
+                target.res = 0;
+            }
+        } else {
+            console.log("Can only attack other unit cards!")
         }
     }
 }
 
 class Effect extends Card {
-    constructor(name, cost, text, stat, mag){
+    constructor(name, cost, text, stat, mag) {
         super(name, cost);
         this.text = text;
         this.stat = stat;
         this.mag = mag;
     }
 
-    play(target){
-        if(this.stat === "resilience"){
-            target.res += this.mag;
-        }
-        if(this.stat === "power"){
-            target.power += this.mag;
+    play(target) {
+        if (target instanceof Unit) {
+            if (this.stat === "resilience") {
+                target.res += this.mag;
+            }
+            if (this.stat === "power") {
+                target.power += this.mag;
+            }
+        } else {
+            console.log("Effect cards can only be played on Unit cards!")
         }
     }
 }
@@ -104,3 +112,7 @@ console.log();
 redBeltNinja.attack(blackBeltNinja);
 console.log("The Red Belt Ninja attacks the Black Belt Ninja!")
 console.log(blackBeltNinja);
+
+// // testing
+// console.log();
+// pairProgram.play(rejection);

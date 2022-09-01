@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const ToDoList = () => {
-    const [tasks, setTasks] = useState([{ 'name': 'get python black belt', 'completed': true, 'visible':true }, { 'name': 'get MERN black belt', 'completed': false, 'visible':true }, { 'name': 'get java black belt', 'completed': true, 'visible':true }, { 'name': 'get a job', 'completed': false, 'visible':true }, { 'name': 'have fun and vibe', 'completed': false, 'visible':true }])
+    const [tasks, setTasks] = useState([{ 'name': 'get python black belt', 'completed': true, 'visible': true }, { 'name': 'get MERN black belt', 'completed': false, 'visible': true }, { 'name': 'get java black belt', 'completed': true, 'visible': true }, { 'name': 'get a job', 'completed': false, 'visible': true }, { 'name': 'have fun and vibe', 'completed': false, 'visible': true }])
 
     const [newTask, setNewTask] = useState('')
 
@@ -10,7 +10,7 @@ const ToDoList = () => {
         event.preventDefault();
         // console.log(newTask);
 
-        setTasks([...tasks, {'name':newTask, 'completed':false, 'visible':true}])
+        setTasks([...tasks, { 'name': newTask, 'completed': false, 'visible': true }])
 
         setNewTask('');
     }
@@ -18,13 +18,13 @@ const ToDoList = () => {
     const completeTask = (text) => {
         // console.log(text);
         let indexNum = 0;
-        for(let i=0; i<tasks.length; i++){
-            if(tasks[i].name === text){
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].name === text) {
                 indexNum = i;
             }
         }
         // console.log(indexNum);
-        setTasks([...tasks, tasks[indexNum].completed=true])
+        setTasks([...tasks, tasks[indexNum].completed = true])
     }
 
     const removeCompletedTask = (taskText) => {
@@ -37,13 +37,25 @@ const ToDoList = () => {
         // console.log(updatedTaskText);
 
         let indexNum = 0;
-        for(let i=0; i<tasks.length; i++){
-            if(tasks[i].name === updatedTaskText){
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].name === updatedTaskText) {
                 indexNum = i;
             }
         }
         // console.log(tasks[indexNum])
-        setTasks([...tasks, tasks[indexNum].visible=false])
+        setTasks([...tasks, tasks[indexNum].visible = false])
+    }
+
+    const checkboxChange = (taskName) => {
+        // console.log("i'm trying to change")
+        console.log(taskName)
+        let indexNum = 0;
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].name === taskName) {
+                indexNum = i;
+            }
+        }
+        setTasks([...tasks, tasks[indexNum].completed = false])
     }
 
     return (
@@ -67,10 +79,14 @@ const ToDoList = () => {
 
             <h3>Tasks Completed</h3>
             {tasks.filter(task => task.completed === true && task.visible === true).map((task, i) =>
-                <li onClick={(e) => removeCompletedTask(e.currentTarget.textContent)}>
-                    <s>{task.name}</s>
-                    <span className="btn btn-sm btn-danger m-1"> Delete</span>
-                </li>)}
+                <div>
+                    <input type="checkbox" checked={task.completed} onChange={() => checkboxChange(task.name)} style={{ marginRight: '10px' }} />
+                    <li style={{ display: 'inline' }} onClick={(e) => removeCompletedTask(e.currentTarget.textContent)}>
+                        <s>{task.name}</s>
+                        <span className="btn btn-sm btn-danger m-1"> Delete</span>
+                        <br />
+                    </li>
+                </div>)}
         </div>
     )
 }

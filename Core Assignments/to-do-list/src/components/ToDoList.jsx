@@ -46,9 +46,20 @@ const ToDoList = () => {
         setTasks([...tasks, tasks[indexNum].visible = false])
     }
 
+    const removeCompletedTask2 = (taskName) => {
+        // console.log(taskName)
+        let indexNum = 0;
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].name === taskName) {
+                indexNum = i;
+            }
+        }
+        setTasks([...tasks, tasks[indexNum].visible = false])
+    }
+
     const checkboxChange = (taskName) => {
         // console.log("i'm trying to change")
-        console.log(taskName)
+        // console.log(taskName)
         let indexNum = 0;
         for (let i = 0; i < tasks.length; i++) {
             if (tasks[i].name === taskName) {
@@ -81,9 +92,10 @@ const ToDoList = () => {
             {tasks.filter(task => task.completed === true && task.visible === true).map((task, i) =>
                 <div>
                     <input type="checkbox" checked={task.completed} onChange={() => checkboxChange(task.name)} style={{ marginRight: '10px' }} />
-                    <li style={{ display: 'inline' }} onClick={(e) => removeCompletedTask(e.currentTarget.textContent)}>
+                    {/* <li style={{ display: 'inline' }} onClick={(e) => removeCompletedTask(e.currentTarget.textContent)}> */}
+                    <li style={{ display: 'inline' }}>
                         <s>{task.name}</s>
-                        <span className="btn btn-sm btn-danger m-1"> Delete</span>
+                        <span className="btn btn-sm btn-danger m-1" onClick={() => removeCompletedTask2(task.name)}> Delete</span>
                         <br />
                     </li>
                 </div>)}

@@ -1,6 +1,7 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'; // can't use import statements outside of a module
+// const {faker} = require('@faker-js/faker');
 
-class User {
+export default class User {
     constructor(){
         this.userID = faker.datatype.number(); // https://fakerjs.dev/api/datatype.html
         this.firstName = faker.name.firstName();

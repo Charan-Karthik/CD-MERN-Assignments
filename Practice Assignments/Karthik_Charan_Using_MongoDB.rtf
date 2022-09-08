@@ -1,167 +1,76 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2639
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 AndaleMono;
-}
-{\colortbl;\red255\green255\blue255;\red123\green221\blue55;\red0\green0\blue0;\red47\green255\blue18;
-\red255\green255\blue255;\red46\green255\blue17;\red47\green255\blue18;}
-{\*\expandedcolortbl;;\cssrgb\c54133\c87606\c27652;\cssrgb\c0\c1\c1;\cssrgb\c15436\c99351\c7462;
-\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c15185\c99094\c7080;\cssrgb\c15436\c99351\c7462;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+Karthik, Charan - Using MongoDB
 
-\f0\b\fs36 \cf2 \ul \ulc2 Karthik, Charan - Using MongoDB\
-\
+1. Create a Database Called ‘my_first_db’
+> use my_first_db
 
-\f1\b0\fs28 \cf3 \ulnone 1. Create a Database Called \'91my_first_db\'92\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+2. Create students collection
+> db.createCollection('students')
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > use my_first_db
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 2. Create students collection\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+3. Create 5 students
+> db.students.insert({name:’Steve Jobs’, home_state:'California', lucky_number:7, birthday:{month:2, day:24, year:1955 }})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.createCollection('students')
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-3. Create 5 students\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+> db.students.insert({name:’Jeff Bezos’, home_state:’Washington’, lucky_number:5, birthday:{month:1, day:12, year:1964 }})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.insert(\{name:\'92Steve Jobs\'92, home_state:'California', lucky_number:7, birthday:\{month:2, day:24, year:1955 \}\})\
-\
-> db.students.insert(\{name:\'92Jeff Bezos\'92, home_state:\'92Washington\'92, lucky_number:5, birthday:\{month:1, day:12, year:1964 \}\})\
-\
-> db.students.insert(\{name:\'92Bill Gates\'92, home_state:\'92Washington\'92, lucky_number:95, birthday:\{month:10, day:28, year:1955 \}\})\
-\
-> db.students.insert(\{name:\'92Steve Wozniak\'92, home_state:\'92California\'92, lucky_number:3, birthday:\{month:8, day:11, year:1950 \}\})\
-\
-> db.students.insert(\{name:\'92Larry Page\'92, home_state:\'92Michigan\'92, lucky_number:0, birthday:\{month:3, day:26, year:1973 \}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-4. Get all students\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+> db.students.insert({name:’Bill Gates’, home_state:’Washington’, lucky_number:95, birthday:{month:10, day:28, year:1955 }})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.find()
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-5. Retrieve all students who are from California (San Jose Dojo) or Washington (Seattle Dojo)\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+> db.students.insert({name:’Steve Wozniak’, home_state:’California’, lucky_number:3, birthday:{month:8, day:11, year:1950 }})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.find(\{$or:[\{home_state:'California'\},\{home_state:'Washington'\}]\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-6. Get all students whose lucky number is greater than 3\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+> db.students.insert({name:’Larry Page’, home_state:’Michigan’, lucky_number:0, birthday:{month:3, day:26, year:1973 }})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.find(\{lucky_number:\{$gt:3\}\}).pretty()
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-7. Get all students whose lucky number is less than or equal to 10\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+4. Get all students
+> db.students.find()
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.find(\{lucky_number:\{$lte:10\}\}).pretty()
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-8. Get all students whose lucky number is between 1 and 9 (inclusive)\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+5. Retrieve all students who are from California (San Jose Dojo) or Washington (Seattle Dojo)
+> db.students.find({$or:[{home_state:'California'},{home_state:'Washington'}]})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.find(\{$and:[\{lucky_number:\{$gte:1\}\}, \{lucky_number:\{$lte:9\}\}]\}).pretty()
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-9. Add a field to each student collection called \'91interests\'92 that is an array. It should contain the following entries: \'91coding\'92, \'91brunch\'92, \'91MongoDB\'92. DO THIS IN ONE OPERATION.\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+6. Get all students whose lucky number is greater than 3
+> db.students.find({lucky_number:{$gt:3}}).pretty()
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.update(\{\}, \{$set:\{interests:['coding', 'brunch', 'MongoDB']\}\}, false, true)
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-10. Add some unique interests for each particular student into each of their interest arrays\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+7. Get all students whose lucky number is less than or equal to 10
+> db.students.find({lucky_number:{$lte:10}}).pretty()
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateOne(\{name:'Steve Jobs'\}, \{$push: \{interests:'fonts'\}\})\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf6 > db.students.updateOne(\{name:'Jeff Bezos'\}, \{$push:\{interests:'space'\}\})\
-> db.students.updateOne(\{name:'Bill Gates'\}, \{$push:\{interests:'malaria'\}\})\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
-\cf4 > db.students.updateOne(\{name:'Steve Wozniak'\}, \{$push:\{interests:\{$each:[\'91books\'92, \'91computers', 'tech']\}\}\})\
-> db.students.updateOne(\{name:'Larry Page'\}, \{$push:\{interests:\{$each:['AI','regulation','big money']\}\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-11. Add the interest \'91taxes\'92 into someone\'92s interest array\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+8. Get all students whose lucky number is between 1 and 9 (inclusive)
+> db.students.find({$and:[{lucky_number:{$gte:1}}, {lucky_number:{$lte:9}}]}).pretty()
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateOne(\{name:'Jeff Bezos'\}, \{$push:\{interests:'taxes'\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-12. Remove the \'91taxes\'92 interest you just added\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+9. Add a field to each student collection called ‘interests’ that is an array. It should contain the following entries: ‘coding’, ‘brunch’, ‘MongoDB’. DO THIS IN ONE OPERATION.
+> db.students.update({}, {$set:{interests:['coding', 'brunch', 'MongoDB']}}, false, true)
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateOne(\{name:"Jeff Bezos"\}, \{$pull: \{interests: 'taxes'\}\})\
-OR\
-> db.students.updateOne(\{name:'Jeff Bezos'\}, \{$pop:\{interests:1\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-13. Remove all students who are from California\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+10. Add some unique interests for each particular student into each of their interest arrays
+> db.students.updateOne({name:'Steve Jobs'}, {$push: {interests:'fonts'}})
+> db.students.updateOne({name:'Jeff Bezos'}, {$push:{interests:'space'}})
+> db.students.updateOne({name:'Bill Gates'}, {$push:{interests:'malaria'}})
+> db.students.updateOne({name:'Steve Wozniak'}, {$push:{interests:{$each:[‘books’, ‘computers', 'tech']}}})
+> db.students.updateOne({name:'Larry Page'}, {$push:{interests:{$each:['AI','regulation','big money']}}})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.deleteMany(\{home_state:'California'\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-14. Remove a student by name\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+11. Add the interest ‘taxes’ into someone’s interest array
+> db.students.updateOne({name:'Jeff Bezos'}, {$push:{interests:'taxes'}})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.deleteOne(\{name:'Jeff Bezos'\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-15. Remove a student whose lucky number is greater than 5 (JUST ONE)\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+12. Remove the ‘taxes’ interest you just added
+> db.students.updateOne({name:"Jeff Bezos"}, {$pull: {interests: 'taxes'}})
+OR
+> db.students.updateOne({name:'Jeff Bezos'}, {$pop:{interests:1}})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.deleteOne(\{lucky_number:\{$gt:5\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-16. Add a field to each student collection called \'91number_of_belts\'94 and set it to 0\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+13. Remove all students who are from California
+> db.students.deleteMany({home_state:'California'})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateMany(\{\},\{$set:\{number_of_belts:0\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-17. Increment this field by 1 for all students in Washington (Seattle Dojo)\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+14. Remove a student by name
+> db.students.deleteOne({name:'Jeff Bezos'})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateMany(\{home_state:'Washington'\}, \{$inc:\{number_of_belts: 1\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-18. Rename the \'91number_of_belts\'92 field to \'91belts_earned\'92\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+15. Remove a student whose lucky number is greater than 5 (JUST ONE)
+> db.students.deleteOne({lucky_number:{$gt:5}})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateMany(\{\}, \{$rename:\{'number_of_belts':'belts_earned'\}\})
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-19. Remove the \'91lucky_number\'92 field\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+16. Add a field to each student collection called ‘number_of_belts” and set it to 0
+> db.students.updateMany({},{$set:{number_of_belts:0}})
 
-\f2\fs24 \cf4 \cb5 \CocoaLigature0 > db.students.updateMany(\{\},[\{$unset:['lucky_number']\}])
-\f1\fs28 \cf3 \cb1 \CocoaLigature1 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf3 \
-20. Add a \'91updated_on\'92 field and set the value as the current date\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+17. Increment this field by 1 for all students in Washington (Seattle Dojo)
+> db.students.updateMany({home_state:'Washington'}, {$inc:{number_of_belts: 1}})
 
-\f2\fs24 \cf7 \cb5 \CocoaLigature0 > db.students.updateMany(\{\},\{$set:\{updated_on:'temp'\}\})\
-> db.students.updateMany(\{\}, \{$currentDate:\{updated_on: true\}\})}
+18. Rename the ‘number_of_belts’ field to ‘belts_earned’
+> db.students.updateMany({}, {$rename:{'number_of_belts':'belts_earned'}})
+
+19. Remove the ‘lucky_number’ field
+> db.students.updateMany({},[{$unset:['lucky_number']}])
+
+20. Add a ‘updated_on’ field and set the value as the current date
+> db.students.updateMany({},{$set:{updated_on:'temp'}})
+> db.students.updateMany({}, {$currentDate:{updated_on: true}})

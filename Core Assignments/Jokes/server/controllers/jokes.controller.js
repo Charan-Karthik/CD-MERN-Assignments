@@ -2,8 +2,7 @@ const Joke = require('../models/jokes.model');
 
 module.exports.findAllJokes = (req, res) => {
     Joke.find()
-        .then(allJokes => res.json({ jokes: allJokes }))
-        // .then(console.log(res))
+        .then(allJokes => res.json({ jokes: allJokes[Math.floor(Math.random()*allJokes.length)] }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }))
 }
 
@@ -25,12 +24,18 @@ module.exports.updateJoke = (req, res) => {
         req.body,
         { new: true, runValidators: true }
     )
-        .then(updatedJoke => res.join({ joke: updatedJoke }))
+        .then(updatedJoke => res.json({ joke: updatedJoke }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }))
 }
 
 module.exports.deleteJoke = (req, res) => {
     Joke.deleteOne({ _id: req.params._id })
         .then(result => res.json({ result: result }))
+        .catch(err => res.json({ message: 'Something went wrong', error: err }))
+}
+
+module.exports.findAllJokesV2 = (req, res) => {
+    Joke.find()
+        .then(allJokesV2 => res.json({ jokesV2: allJokesV2 }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }))
 }

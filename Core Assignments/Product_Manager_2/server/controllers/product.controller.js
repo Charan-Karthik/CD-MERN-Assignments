@@ -21,5 +21,6 @@ module.exports.createProduct = (request, response) => {
 module.exports.findOneByID = (request, response) => {
     Product.findOne({_id:request.params.id})
         .then(product => response.json(product))
+        // .then(product => console.log(product))
         .catch(err => response.json(err))
 }

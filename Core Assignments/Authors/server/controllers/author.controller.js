@@ -9,7 +9,7 @@ module.exports.findAllAuthors = (request, response) => {
 module.exports.createAuthor = (request, response) => {
     Author.create(request.body)
         .then(newAuthor => response.json(newAuthor))
-        .catch(err => res.json({ message: 'Something went wrong', error: err }))
+        .catch(err => response.json({ message: 'Something went wrong', error: err }))
 }
 
 module.exports.findOneByID = (request, response) => {

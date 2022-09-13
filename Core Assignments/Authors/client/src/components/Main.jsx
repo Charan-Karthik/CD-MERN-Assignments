@@ -16,16 +16,6 @@ const Main = (props) => {
             .catch(err => console.log(err));
     }, [])
 
-    // const sortAuthors = () => {
-    //     // console.log(allAuthors)
-
-    //     let list = [...[allAuthors]]
-    //     console.log('before sorting', list)
-    //     list.sort( (a,b) => (a.name > b.name) ? 1 : -1)
-    //     console.log('after sorting', list)
-        
-    // }
-
     const deleteButtonAction = (authorID) => {
         axios.delete(`http://localhost:8000/api/authors/${authorID}/delete`)
             .then(res => removeFromDom(authorID))
@@ -37,8 +27,6 @@ const Main = (props) => {
             <Link to={'/author/create'}>Add an author</Link>
 
             <p className='mt-5' style={{ 'color': 'rebeccapurple' }}>We have quotes by:</p>
-
-            {/* { allAuthors.length > 1 ? sortAuthors() : "not enough authors" } */}
 
             <table className='table table-striped table-bordered w-50'>
                 <thead>

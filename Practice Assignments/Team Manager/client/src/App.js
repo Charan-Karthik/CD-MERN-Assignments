@@ -1,6 +1,7 @@
 import { Link, Routes, Route, Navigate } from 'react-router-dom';
 import PlayerList from './components/PlayerList';
 import AddPlayer from './components/AddPlayer';
+import PlayerStatus from './components/PlayerStatus';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path={'*'} element={<Navigate to={'/players/list'} />} />
         <Route path={'/players/list'} element={<PlayerList />} />
         <Route path={'/players/add'} element={<AddPlayer />} />
+        <Route path={'/status/game/1'} element={<PlayerStatus />} />
       </Routes>
 
     </div>

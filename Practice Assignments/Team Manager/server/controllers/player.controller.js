@@ -7,7 +7,7 @@ module.exports.findAllPlayers = (request, response) => {
 }
 
 module.exports.createPlayer = (request, response) => {
-    console.log(request.body)
+    // console.log(request.body)
     Player.create(request.body)
         .then(newPlayer => response.json(newPlayer))
         .catch(err => response.status(400).json(err))

@@ -51,14 +51,16 @@ const AddPlayer = () => {
                 {errors.map((err, index) => <p style={{ 'color': 'red' }} key={index}>{err}</p>)}
                 <div className='mb-3'>
                     <label className='form-label'>Player Name:</label>
-                    <input className='form-control' onChange={e => setPlayerName(e.target.value)} required/>
+                    <input className='form-control' onChange={e => setPlayerName(e.target.value)} required />
+                    {playerName ? playerName.length < 2 ? <p className='mt-2' style={{'color':'red'}}>Player name is required and must be at least 2 characters long</p> : "" : ""}
                 </div>
                 <div className='mb-3'>
                     <label className='form-label'>Preferred Position:</label>
                     <input className='form-control' onChange={e => setPlayerPos(e.target.value)} />
                 </div>
                 <div className='d-flex justify-content-center'>
-                    <button type='submit' className='btn btn-success'>Submit</button>
+                    
+                    { playerName.length >= 2 ? <button type='submit' className='btn btn-success'>Submit</button> : <button type='submit' className='btn btn-success' disabled>Submit</button>}
                 </div>
             </form>
         </div>

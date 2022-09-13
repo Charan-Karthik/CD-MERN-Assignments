@@ -12,6 +12,22 @@ const PlayerList = (props) => {
             .catch(err => console.log(err));
     }, [])
 
+    const removeFromDom = (playerID) => {
+        setAllPlayers(allPlayers.filter(player => player._id !== playerID))
+    }
+
+    const deletePlayer = (playerID) => {
+        axios.delete(`http://localhost:8000/api/players/${playerID}`)
+            .then(res => removeFromDom(playerID))
+            .catch(err => console.log(err));
+    }
+
+    const popup = (playerID, playerName) => {
+        if(window.confirm(`Are you sure you want to delete ${playerName.toUpperCase()} from the list of players?`) === true){
+            deletePlayer(playerID);
+        }
+    }
+
     return (
         <div className='container mt-5'>
             <div className='w-25'>
@@ -35,7 +51,8 @@ const PlayerList = (props) => {
                         <tr key={player._id} >
                             <td>{player.name}</td>
                             <td>{player.position}</td>
-                            <td><button className='btn btn-danger'>Delete</button></td>
+                            <td><button className='btn btn-danger' onClick={() => popup(player._id, player.name)}>Delete</button></td>
+                            {/* Previous Implementation without Popup:  onClick={e => deletePlayer(player._id)} */}
                         </tr>
                     )}
                 </tbody>

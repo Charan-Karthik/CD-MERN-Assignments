@@ -10,6 +10,21 @@ const PlayerSchema = new mongoose.Schema({
         type: String,
         required: false,
         default: ""
+    },
+    game1: {
+        type: String,
+        required: false,
+        default: "undecided"
+    },
+    game2: {
+        type: String,
+        required: false,
+        default: "undecided"
+    }, 
+    game3: {
+        type: String,
+        required: false,
+        default: "undecided"
     }
 }, { timestamps: true });
 
